@@ -5,6 +5,7 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white">
+      {/* Main Navbar Container */}
       <div className="container relative flex h-20 items-center justify-between">
 
         {/* Mobile Menu Button */}
@@ -20,14 +21,18 @@ function Navbar() {
         <div className="flex items-center gap-2 md:flex-1 max-md:absolute max-md:left-1/2 max-md:-translate-x-1/2">
           <div
             className="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-bold text-white"
-            style={{ backgroundImage: "var(--brand-gradient)" }}
+            style={{
+              backgroundImage: "var(--brand-gradient)",
+            }}
           >
             DS
           </div>
 
           <span
             className="bg-clip-text text-xl font-bold text-transparent"
-            style={{ backgroundImage: "var(--brand-gradient)" }}
+            style={{
+              backgroundImage: "var(--brand-gradient)",
+            }}
           >
             Dev Stack
           </span>
@@ -72,19 +77,20 @@ function Navbar() {
         </div>
 
         {/* Auth Buttons */}
-        {/* Auth Buttons */}
-<div className="flex items-center justify-end gap-5 md:flex-1">
-  <button className="text-sm font-medium text-gray-700 transition hover:text-pink-600">
-    Sign In
-  </button>
+        <div className="flex items-center justify-end gap-5 md:flex-1">
+          <button className="text-sm font-medium text-gray-700 transition hover:text-pink-600">
+            Sign In
+          </button>
 
-  <button
-    className="inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:opacity-90 active:scale-95"
-    style={{ backgroundImage: "var(--brand-gradient, linear-gradient(135deg, #a855f7 0%, #ec4899 100%))" }}
-  >
-    Sign Up
-  </button>
-</div>
+          <button
+            className="inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-medium text-white shadow-sm transition-all hover:opacity-90 active:scale-95"
+            style={{
+              backgroundImage:
+                "var(--brand-gradient, linear-gradient(135deg, #a855f7 0%, #ec4899 100%))",
+            }}
+          >
+            Sign Up
+          </button>
         </div>
       </div>
 
