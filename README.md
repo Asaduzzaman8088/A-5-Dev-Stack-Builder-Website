@@ -1,75 +1,13 @@
-# React + TypeScript + Vite
+1. JSX: It's basically a syntax that lets us write HTML directly inside JavaScript. It makes writing React code much easier because you can clearly see what the UI looks like right where the logic is.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. Props vs State: Props are used to pass data down from a parent component to a child component and they cannot be changed by the child. State is local data managed inside the component itself that can be changed when users interact with the app.
 
-Currently, two official plugins are available:
+3. useState: This hook is used to create and update dynamic data in functional components. In my project, I used it to keep track of the technologies data, the items added to the stack, and the loading spinner state.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+4. useEffect: It handles side effects when a component loads or updates. I needed it here to run the fetch code just once when the page opens so it can pull data from the technologies.json file.
 
-## React Compiler
+5. Unique key prop: React relies on keys to track which items in a list are added, deleted, or changed. Without unique keys, React gets confused when updating the list and it can cause performance issues or UI glitches.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+6. Conditional rendering: It means rendering different UI elements based on a condition. For example, I used it to show the Stack is empty message when stack.length === 0, and show the selected item cards when items are added.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+7. Data passing: Parent components send data down to child components using props. If the child needs to send data back up, the parent passes down a callback function as a prop, and the child calls that function with the data inside it.
