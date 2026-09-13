@@ -1,6 +1,7 @@
 import Navbar from "./Components/Navbar";
 import HeroSection from "./Components/HeroSection";
 import Technologies from "./Components/Technologies";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <main>
         <HeroSection />
         <Technologies />
+        <Footer />
       </main>
     </div>
   );
