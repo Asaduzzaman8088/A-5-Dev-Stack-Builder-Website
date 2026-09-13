@@ -206,24 +206,24 @@ function Technologies() {
       <div className="container mx-auto px-4">
         {/* ================= Section Heading ================= */}
 
-        <div className="mb-10 text-center">
-          <h2 className="text-4xl font-bold text-[#111827] md:text-5xl">
-            Explore the{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "var(--brand-gradient)",
-              }}
-            >
-              Technologies
-            </span>
-          </h2>
+        <div className="mb-10 text-left">
+  <h2 className="text-4xl font-bold text-[#111827] md:text-5xl">
+    Explore the{" "}
+    <span
+      className="bg-clip-text text-transparent"
+      style={{
+        backgroundImage: "var(--brand-gradient)",
+      }}
+    >
+      Technologies
+    </span>
+  </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-base text-[#64748b]">
-            Discover the tools and technologies you can use to build your next
-            great project.
-          </p>
-        </div>
+  <p className="mt-3 max-w-2xl text-base text-[#64748b]">
+    Discover the tools and technologies you can use to build your next
+    great project.
+  </p>
+</div>
 
         {/* ================= Main Layout ================= */}
 
