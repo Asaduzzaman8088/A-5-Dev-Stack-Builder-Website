@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   FaReact,
   FaVuejs,
@@ -17,6 +18,8 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
+// ================= Technology Type =================
+
 type Technology = {
   name: string;
   category: string;
@@ -26,6 +29,8 @@ type Technology = {
   level: string;
   icon: React.ElementType;
 };
+
+// ================= Technology Data =================
 
 const technologies: Technology[] = [
   {
@@ -38,7 +43,6 @@ const technologies: Technology[] = [
     level: "Beginner-Friendly",
     icon: FaReact,
   },
-
   {
     name: "Vue.js",
     category: "Frontend",
@@ -49,7 +53,6 @@ const technologies: Technology[] = [
     level: "Beginner-Friendly",
     icon: FaVuejs,
   },
-
   {
     name: "Svelte",
     category: "Frontend",
@@ -60,7 +63,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: SiSvelte,
   },
-
   {
     name: "Next.js",
     category: "Frontend",
@@ -71,7 +73,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: SiNextdotjs,
   },
-
   {
     name: "Node.js",
     category: "Backend",
@@ -82,7 +83,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: FaNodeJs,
   },
-
   {
     name: "PostgreSQL",
     category: "Database",
@@ -93,7 +93,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: SiPostgresql,
   },
-
   {
     name: "Redis",
     category: "Database",
@@ -104,7 +103,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: SiRedis,
   },
-
   {
     name: "JavaScript",
     category: "Language",
@@ -115,7 +113,6 @@ const technologies: Technology[] = [
     level: "Beginner-Friendly",
     icon: SiJavascript,
   },
-
   {
     name: "TypeScript",
     category: "Language",
@@ -126,7 +123,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: SiTypescript,
   },
-
   {
     name: "Java",
     category: "Language",
@@ -137,7 +133,6 @@ const technologies: Technology[] = [
     level: "Intermediate",
     icon: FaJava,
   },
-
   {
     name: "Tailwind CSS",
     category: "Styling",
@@ -148,7 +143,6 @@ const technologies: Technology[] = [
     level: "Beginner-Friendly",
     icon: SiTailwindcss,
   },
-
   {
     name: "Docker",
     category: "DevOps",
@@ -161,37 +155,57 @@ const technologies: Technology[] = [
   },
 ];
 
+// ================= Technologies Component =================
+
 function Technologies() {
+  // Selected technologies
   const [stack, setStack] = useState<string[]>([]);
 
-  // Add technology
+  // Success message
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
+  // ================= Add To Stack =================
+
   const addToStack = (name: string) => {
     setStack((previousStack) => {
+      // Prevent duplicate technology
       if (previousStack.includes(name)) {
         return previousStack;
       }
 
       return [...previousStack, name];
     });
+
+    // Show success message
+    setSuccessMessage(`${name} successfully added!`);
+
+    // Hide message after 3 seconds
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 3000);
   };
 
-  // Remove technology
+  // ================= Remove From Stack =================
+
   const removeFromStack = (name: string) => {
     setStack((previousStack) =>
       previousStack.filter((item) => item !== name)
     );
   };
 
-  // Remove all technologies
+  // ================= Remove All =================
+
   const removeAll = () => {
     setStack([]);
   };
 
-  return (
-    <section className="bg-[#f8fafc] py-16">
-      <div className="container mx-auto px-4">
+  // ================= JSX =================
 
+  return (
+    <section className="bg-[#f8fafc] py-16 relative min-h-screen">
+      <div className="container mx-auto px-4">
         {/* ================= Section Heading ================= */}
+
         <div className="mb-10 text-center">
           <h2 className="text-4xl font-bold text-[#111827] md:text-5xl">
             Explore the{" "}
@@ -206,17 +220,17 @@ function Technologies() {
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-base text-[#64748b]">
-            Discover the tools and technologies you can use to build your
-            next great project.
+            Discover the tools and technologies you can use to build your next
+            great project.
           </p>
         </div>
 
         {/* ================= Main Layout ================= */}
+
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_300px]">
-
           {/* ================= Technology Cards ================= */}
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
 
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {technologies.map((tech) => {
               const isAdded = stack.includes(tech.name);
 
@@ -227,16 +241,17 @@ function Technologies() {
                   key={tech.name}
                   className="flex min-h-[300px] flex-col rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
-
                   {/* ================= Card Header ================= */}
-                  <div className="flex items-start justify-between">
 
+                  <div className="flex items-start justify-between">
                     {/* Icon */}
+
                     <div className="flex h-12 w-12 items-center justify-center">
                       <Icon className="text-3xl text-[#111827]" />
                     </div>
 
                     {/* Badge */}
+
                     {tech.tag && (
                       <span
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
@@ -267,40 +282,45 @@ function Technologies() {
                   </div>
 
                   {/* ================= Technology Name ================= */}
+
                   <h3 className="mt-4 text-xl font-bold text-[#111827]">
                     {tech.name}
                   </h3>
 
                   {/* ================= Description ================= */}
+
                   <p className="mt-2 text-sm leading-6 text-[#64748b]">
                     {tech.description}
                   </p>
 
                   {/* ================= Divider ================= */}
+
                   <div className="my-4 border-t border-[#e2e8f0]" />
 
                   {/* ================= Meta Information ================= */}
-                  <div className="flex items-center justify-between text-xs">
 
+                  <div className="flex items-center justify-between text-xs">
                     {/* Category */}
+
                     <span className="rounded-md bg-[#f1f5f9] px-2 py-1 text-[#475569]">
                       {tech.category}
                     </span>
 
                     {/* Level */}
-                    <span className="text-[#64748b]">
-                      {tech.level}
-                    </span>
+
+                    <span className="text-[#64748b]">{tech.level}</span>
 
                     {/* Rating */}
+
                     <div className="flex items-center gap-1 text-[#475569]">
                       <span className="text-yellow-400">★</span>
+
                       <span>{tech.rating}</span>
                     </div>
-
                   </div>
 
                   {/* ================= Add Button ================= */}
+
                   <button
                     onClick={() => addToStack(tech.name)}
                     disabled={isAdded}
@@ -312,56 +332,60 @@ function Technologies() {
                   >
                     {isAdded ? "Added to Stack" : "Add to Stack"}
                   </button>
-
                 </div>
               );
             })}
-
           </div>
 
-          {/* ================= Your Stack ================= */}
-          <div className="h-fit rounded-xl border border-[#e2e8f0] bg-white p-5 shadow-sm">
+          {/* ================= Sidebar (Your Stack Card) ================= */}
 
-            {/* Header */}
-            <div>
-              <h3 className="text-2xl font-bold text-[#111827]">
-                Your Stack
-              </h3>
+          <div>
+            <div className="h-fit rounded-xl border border-[#e2e8f0] bg-white p-5 shadow-sm">
+              {/* Header */}
 
-              <p className="mt-1 text-sm text-[#94a3b8]">
-                {stack.length === 0
-                  ? "No technologies selected yet."
-                  : `${stack.length} ${
-                      stack.length === 1
-                        ? "technology"
-                        : "technologies"
-                    } selected.`}
-              </p>
-            </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[#111827]">
+                  Your Stack
+                </h3>
 
-            {/* Stack Content */}
-            <div className="mt-4">
+                <p className="mt-1 text-sm text-[#94a3b8]">
+                  {stack.length === 0
+                    ? "No technologies selected yet."
+                    : `${stack.length} ${
+                        stack.length === 1
+                          ? "technology"
+                          : "technologies"
+                      } selected.`}
+                </p>
+              </div>
 
-              {/* Empty State */}
-              {stack.length === 0 ? (
-                <div className="rounded-xl border border-dashed border-[#cbd5e1] px-4 py-6 text-center">
-                  <p className="text-sm text-[#94a3b8]">
-                    Your stack is empty.
-                  </p>
-                </div>
-              ) : (
-                <div>
+              {/* ================= Stack Content ================= */}
 
-                  {/* Selected Technologies */}
+              <div className="mt-4">
+                {/* Empty Stack */}
+
+                {stack.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-[#cbd5e1] px-4 py-6 text-center">
+                    <p className="text-sm text-[#94a3b8]">
+                      Your stack is empty.
+                    </p>
+                  </div>
+                ) : (
+                  /* Selected Technologies */
+
                   <div>
                     {stack.map((name) => (
                       <div
                         key={name}
                         className="flex items-center justify-between border-b border-[#e2e8f0] py-3"
                       >
+                        {/* Technology Name */}
+
                         <span className="text-base text-[#334155]">
                           {name}
                         </span>
+
+                        {/* Remove Button */}
 
                         <button
                           onClick={() => removeFromStack(name)}
@@ -372,23 +396,44 @@ function Technologies() {
                         </button>
                       </div>
                     ))}
+
+                    {/* Remove All */}
+
+                    <button
+                      onClick={removeAll}
+                      className="mt-4 text-sm font-medium text-pink-500 transition hover:text-pink-600"
+                    >
+                      Remove All
+                    </button>
                   </div>
-
-                  {/* Remove All */}
-                  <button
-                    onClick={removeAll}
-                    className="mt-4 text-sm font-medium text-pink-500 transition hover:text-pink-600"
-                  >
-                    Remove All
-                  </button>
-
-                </div>
-              )}
-
+                )}
+              </div>
             </div>
           </div>
-
         </div>
+      </div>
+
+      {/* ================= Popup / Toast Notification ================= */}
+
+      <div
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 px-5 py-3.5 shadow-lg transition-all duration-300 ${
+          successMessage
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0"
+        }`}
+      >
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 text-xs font-bold text-white">
+          ✓
+        </div>
+        <p className="text-sm font-semibold text-green-800">
+          {successMessage}
+        </p>
+        <button
+          onClick={() => setSuccessMessage("")}
+          className="ml-2 text-green-600 hover:text-green-800"
+        >
+          ×
+        </button>
       </div>
     </section>
   );
