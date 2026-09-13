@@ -3,7 +3,7 @@ import heroImage from "../assets/banner-stack.png";
 function HeroSection() {
   return (
     <section className="bg-white">
-      <div className="container flex flex-col items-center px-8 py-16 md:min-h-[500px] md:flex-row md:justify-between md:gap-20 md:px-8 md:py-20">
+      <div className="container flex flex-col items-center px-8 py-16 md:min-h-[500px] md:flex-row md:justify-between md:gap-20 md:px-8 md:py-20 pt-[150px] ">
 
         {/* Left Content */}
         <div className="w-full md:w-[52%]">
