@@ -12,33 +12,14 @@ function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center text-3xl text-gray-700 md:hidden"
+          className="flex flex-row justify-between h-10 w-10 items-center text-3xl text-gray-700 md:hidden"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? "✕" : "☰"}
         </button>
 
         {/* Logo */}
-        <div className="flex items-center gap-2 md:flex-1 max-md:absolute max-md:left-1/2 max-md:-translate-x-1/2">
-          {/* <div
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-bold text-white"
-            style={{
-              backgroundImage: "var(--brand-gradient)",
-            }}
-          >
-            DS
-          </div>
-
-          <span
-            className="bg-clip-text text-xl font-bold text-transparent"
-            style={{
-              backgroundImage: "var(--brand-gradient)",
-            }}
-          >
-            Dev Stack
-          </span> */}
-          <a href="/"><img src={logo} alt="Dev Stack Logo" /></a>
-        </div>
+        <a href="/"><img src={logo} alt="Dev Stack Logo" /></a>
 
         {/* Desktop Menu */}
         <div className="hidden items-center gap-9 md:flex">
@@ -79,7 +60,7 @@ function Navbar() {
         </div>
 
         {/* Auth Buttons */}
-        <div className="flex items-center justify-end gap-5 md:flex-1">
+        <div className="flex items-center justify-end gap-5">
           <button className="text-sm font-medium text-gray-700 transition hover:text-pink-600">
             Sign In
           </button>
