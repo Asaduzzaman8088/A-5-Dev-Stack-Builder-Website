@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../assets/Link.svg";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ function Navbar() {
 
         {/* Logo */}
         <div className="flex items-center gap-2 md:flex-1 max-md:absolute max-md:left-1/2 max-md:-translate-x-1/2">
-          <div
+          {/* <div
             className="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-bold text-white"
             style={{
               backgroundImage: "var(--brand-gradient)",
@@ -35,7 +36,8 @@ function Navbar() {
             }}
           >
             Dev Stack
-          </span>
+          </span> */}
+          <a href="/"><img src={logo} alt="Dev Stack Logo" /></a>
         </div>
 
         {/* Desktop Menu */}
